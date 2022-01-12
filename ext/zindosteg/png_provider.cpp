@@ -38,7 +38,7 @@ void flush_data(png_structp)
 
 const byte png_provider::signature[8] = {0x89,0x50,0x4E,0x47,0x0D,0x0A,0x1A,0x0A};
 
-png_provider::png_provider(std::filesystem::path const& filename)
+png_provider::png_provider(filesystem::path const& filename)
     : png_provider( utils::load_from_file(filename) )
 {
 }
@@ -126,7 +126,7 @@ byte_vector png_provider::commit_to_memory()
 	return data;
 }
 
-void png_provider::commit_to_file(std::filesystem::path const& file)
+void png_provider::commit_to_file(filesystem::path const& file)
 {
   FILE *f = fopen(file.string().c_str(), "wb");
   png_write_ctx write_ctx;

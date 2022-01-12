@@ -8,7 +8,7 @@ namespace steganography {
 
 class bmp_provider : public provider_t {
 public:
-	explicit bmp_provider( std::filesystem::path const& filename );
+	explicit bmp_provider( filesystem::path const& filename );
 	bmp_provider(byte const* data, size_t size);
 	explicit bmp_provider(byte_vector const& data);
 	explicit bmp_provider(byte_vector && data);
@@ -25,7 +25,7 @@ public:
 	virtual byte & access_indexed_data( index_t index ) override;
 	virtual byte const& access_indexed_data( index_t index ) const override;
 	virtual byte_vector commit_to_memory() override;
-	virtual void commit_to_file(std::filesystem::path const& file) override;
+	virtual void commit_to_file(filesystem::path const& file) override;
 	virtual byte_vector salt() const override;
 
 private:

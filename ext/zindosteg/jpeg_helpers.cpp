@@ -14,7 +14,7 @@ namespace zindorsky {
 namespace steganography {
 namespace jpeg {
 
-decompress_ctx::decompress_ctx( std::filesystem::path const& filename )
+decompress_ctx::decompress_ctx( filesystem::path const& filename )
 	: decompress_ctx( utils::load_from_file(filename) )
 {
 }
@@ -80,7 +80,7 @@ decompress_ctx::~decompress_ctx()
 	}
 }
 
-void decompress_ctx::save_to_file( std::filesystem::path const& filename )
+void decompress_ctx::save_to_file( filesystem::path const& filename )
 {
 	FILE* file = ::fopen( filename.c_str(), "wb" );
 	if(!file) {

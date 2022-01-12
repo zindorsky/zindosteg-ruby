@@ -4,7 +4,6 @@
 #include "steg_defs.h"
 #include <cstdio>
 #include <jpeglib.h>
-#include <filesystem>
 #include <vector>
 
 //error handling callback for jpeg lib
@@ -21,7 +20,7 @@ public:
 
 class decompress_ctx {
 public:
-	explicit decompress_ctx( std::filesystem::path const& filename );
+	explicit decompress_ctx( filesystem::path const& filename );
 	decompress_ctx(byte const* data, size_t size);
 	explicit decompress_ctx(byte_vector const& data);
 	explicit decompress_ctx(byte_vector && data);
@@ -39,7 +38,7 @@ public:
 
 	jvirt_barray_ptr* coefficients() const { return coeff_; }
 
-	void save_to_file( std::filesystem::path const& filename );
+	void save_to_file( filesystem::path const& filename );
 	byte_vector save_to_memory();
 
 private:
