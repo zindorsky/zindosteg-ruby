@@ -6,7 +6,7 @@
 namespace zindorsky {
 namespace steganography {
 
-bmp_provider::bmp_provider( std::filesystem::path const& filename )
+bmp_provider::bmp_provider( filesystem::path const& filename )
 	: bmp_provider( utils::load_from_file(filename) )
 {
 }
@@ -72,7 +72,7 @@ byte_vector bmp_provider::commit_to_memory()
 	return file_;
 }
 
-void bmp_provider::commit_to_file(std::filesystem::path const& file)
+void bmp_provider::commit_to_file(filesystem::path const& file)
 {
 	utils::save_to_file(file, file_);
 }

@@ -6,7 +6,7 @@
 namespace zindorsky {
 namespace steganography {
 
-jpeg_provider::jpeg_provider( std::filesystem::path const& filename )
+jpeg_provider::jpeg_provider( filesystem::path const& filename )
 	: jpeg_provider( utils::load_from_file(filename) )
 {
 }
@@ -70,7 +70,7 @@ byte_vector jpeg_provider::commit_to_memory()
 	return jinfo_.save_to_memory();
 }
 
-void jpeg_provider::commit_to_file(std::filesystem::path const& file)
+void jpeg_provider::commit_to_file(filesystem::path const& file)
 {
 	jinfo_.save_to_file(file);
 }

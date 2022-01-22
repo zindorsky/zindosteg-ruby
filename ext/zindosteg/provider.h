@@ -3,7 +3,6 @@
 #include "steg_defs.h"
 #include <vector>
 #include <memory>
-#include <filesystem>
 #include <cstdint>
 #include <exception>
 
@@ -19,7 +18,7 @@ public:
 class provider_t {
 public:
 	//Loads from file.
-	static std::unique_ptr<provider_t> load(std::filesystem::path const& file);
+	static std::unique_ptr<provider_t> load(filesystem::path const& file);
 	//Loads from memory. Caller retains ownership of buffer.
 	static std::unique_ptr<provider_t> load(void const* data, size_t size);
 
@@ -33,7 +32,7 @@ public:
 	virtual byte & access_indexed_data(index_t index) = 0;
 	virtual byte const& access_indexed_data( index_t index ) const = 0;
 	virtual byte_vector commit_to_memory() = 0;
-	virtual void commit_to_file(std::filesystem::path const& file) = 0;
+	virtual void commit_to_file(filesystem::path const& file) = 0;
 	virtual byte_vector salt() const = 0;
 
 };

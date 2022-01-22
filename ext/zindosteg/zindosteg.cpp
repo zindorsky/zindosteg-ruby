@@ -122,7 +122,7 @@ namespace {
   class device_interface {
   public:
     device_interface(std::string const& carrier_file, std::string const& password, mode const& mode = "r"s)
-			: device_interface{steganography::device_t{std::filesystem::path{carrier_file}, password, !mode.create, !mode.append}, password, mode}
+			: device_interface{steganography::device_t{filesystem::path{carrier_file}, password, !mode.create, !mode.append}, password, mode}
     {
       if (!mode_.create) {
         //Check hmac to make sure password is correct, payload hasn't been tampered with, etc.

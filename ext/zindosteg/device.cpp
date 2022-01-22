@@ -7,7 +7,7 @@ namespace steganography {
 
 enum { max_length_sz = 9, nybble_span = 15, byte_span = nybble_span*2, };
 
-device_t::device_t( std::filesystem::path const& carrier_file, std::string const& password, bool open_existing_payload, bool throw_on_open_existing_fail )
+device_t::device_t( filesystem::path const& carrier_file, std::string const& password, bool open_existing_payload, bool throw_on_open_existing_fail )
 	: device_t( provider_t::load(carrier_file), password, open_existing_payload, throw_on_open_existing_fail )
 {
 	carrier_file_ = carrier_file;
@@ -117,7 +117,7 @@ void device_t::flush()
 	}
 }
 
-void device_t::write_to_file(std::filesystem::path const& outfile)
+void device_t::write_to_file(filesystem::path const& outfile)
 {
 	if (dirty_) {
 		write_payload_length();

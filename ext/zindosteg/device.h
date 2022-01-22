@@ -4,7 +4,7 @@
 #include "provider.h"
 #include "permutator.h"
 #include <stdexcept>
-#include <filesystem>
+#include "steg_defs.h"
 
 namespace zindorsky {
 namespace steganography {
@@ -21,7 +21,7 @@ public:
 	//If "open_existing_payload" is true, a check will be made for a valid payload length (and possibly other parameters).
 	//If the check fails then if throw_on_open_existing_fail is true a payload_extraction_error exception will be thrown. If throw_on_open_existing_fail is false, the intitial size will be set to zero.
 	//If "open_existing_payload" is false, no check will be made and a new length will be written when the device is closed.
-	device_t(std::filesystem::path const& carrier_file, std::string const& password, bool open_existing_payload, bool throw_on_open_existing_fail = true);
+	device_t(filesystem::path const& carrier_file, std::string const& password, bool open_existing_payload, bool throw_on_open_existing_fail = true);
 	//Takes ownership of provider:
 	device_t(std::unique_ptr<provider_t> provider, std::string const& password, bool open_existing_payload, bool throw_on_open_existing_fail = true);
 
@@ -44,7 +44,7 @@ public:
 	std::streamsize truncate(); //sets eof to current position
 	void flush();
 
-	void write_to_file(std::filesystem::path const& outfile);
+	void write_to_file(filesystem::path const& outfile);
 	byte_vector write_to_memory();
 
 	//Returns salt derived from the carrier.
@@ -52,7 +52,7 @@ public:
 
 private:
 	std::unique_ptr<provider_t>  provider_;
-	std::filesystem::path carrier_file_;
+	filesystem::path carrier_file_;
 	permutator::context shuffler_;
 	std::streamsize max_sz_, payload_sz_;
 	std::streampos pos_;

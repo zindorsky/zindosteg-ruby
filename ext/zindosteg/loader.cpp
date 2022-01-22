@@ -4,6 +4,7 @@
 #include "bmp.h"
 #include "jpeg.h"
 #include "png_provider.h"
+#include "string.h"
 
 namespace zindorsky {
 namespace steganography {
@@ -12,7 +13,7 @@ namespace {
 	const size_t min_header_sz = 0x40;
 }
 
-std::unique_ptr<provider_t> provider_t::load(std::filesystem::path const& file)
+std::unique_ptr<provider_t> provider_t::load(filesystem::path const& file)
 {
 	std::ifstream source(file.c_str());
 	//read first few bytes for header
