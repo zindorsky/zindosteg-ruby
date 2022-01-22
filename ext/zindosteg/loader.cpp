@@ -4,6 +4,7 @@
 #include "bmp.h"
 #include "jpeg.h"
 #include "png_provider.h"
+#include "string.h"
 
 namespace zindorsky {
 namespace steganography {

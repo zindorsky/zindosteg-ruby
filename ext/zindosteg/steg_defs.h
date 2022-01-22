@@ -13,7 +13,7 @@ namespace zindorsky {
 using byte = unsigned char;
 using byte_vector = std::vector<byte>;
 
-#if EXPERIMENTAL_FILESYSTEM
+#if defined(EXPERIMENTAL_FILESYSTEM)
 # include <experimental/filesystem>
 namespace filesystem = std::experimental::filesystem;
 #else

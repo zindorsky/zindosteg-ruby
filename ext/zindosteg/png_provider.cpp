@@ -1,6 +1,7 @@
 #include "png_provider.h"
 #include <exception>
 #include "file_utils.h"
+#include "string.h"
 
 namespace zindorsky {
 namespace steganography {
