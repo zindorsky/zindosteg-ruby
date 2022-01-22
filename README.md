@@ -63,7 +63,7 @@ file.size
 file.eof?
 # etc
 
-# Use the `capacity` method to see the maximum number of bytes that the carrier file can hide.
+# Use the 'capacity' method to see the maximum number of bytes that the carrier file can hide.
 file.capacity
 
 # All the standard modes for opening files are supported:
@@ -73,7 +73,11 @@ file = ::Zindosteg::File.open("carrier.jpeg", "secretpassword", "a") # Opens for
 
 # etc
 
-# If you open for reading (or appending) and either (1) an incorrect password is given, or (2) there is no existing payload, or (3) the carrier file has been corrupted or tampered with, then a "RuntimeError (HMAC verification failure.)" exception will be thrown.
+# If you open for reading (or appending) and either
+#  (1) an incorrect password is given, or
+#  (2) there is no existing payload, or
+#  (3) the carrier file has been corrupted or tampered with
+# then a "RuntimeError (HMAC verification failure.)" exception will be thrown.
 
 ```
 
