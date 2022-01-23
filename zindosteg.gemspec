@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["nephi.allred@gmail.com"]
 
   spec.summary       = %q{Basic steganography}
-  spec.description   = %q{Hide and encrypt data inside JPG, PNG, and BMP files.}
+  spec.description   = %q{Use steganography to hide and encrypt data inside JPG, PNG, and BMP files.}
   spec.homepage      = "https://github.com/zindorsky/zindosteg-ruby"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")

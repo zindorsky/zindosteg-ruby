@@ -13,6 +13,7 @@ This gem is a Ruby interface to the Zindosteg C++ library, which uses a variant 
 Zindosteg supports JPEG, PNG, and BMP carrier files. PNG files must have at least 8 bit depth, and not be "palette" type. BMP files must be 24-bit.
 
 ## Installation
+Note: To compile the native extensions, you may need to install JPEG, PNG, and OpenSSL development packages.
 
 Add this line to your application's Gemfile:
 
@@ -28,13 +29,11 @@ Or install it yourself as:
 
     $ gem install zindosteg
 
-Note: To compile the native extensions, you may need to install JPEG, PNG, and OpenSSL development packages.
-
 ## Usage
 Zindosteg is designed to mimic Ruby's `File` class as closely as possible. The basic idea is that you get a `Zindosteg` instance by "opening" the carrier file with a password. Then you can read and write to the `Zindosteg` object in the same way you normally would to a `File` object, using the same methods (e.g. `read`, `write`, `readlines`, `eof?`, `seek`, `tell`, etc.). You can even pass the `Zindosteg` instance to functions that expect `File` objects and everything should work.
 
 ### Examples
-```
+```ruby
 # Open a new carrier for writing (overwriting any existing payload)
 file = ::Zindosteg::File.open("carrier.jpeg", "secretpassword", "w")
 
@@ -79,6 +78,12 @@ file = ::Zindosteg::File.open("carrier.jpeg", "secretpassword", "a") # Opens for
 #  (3) the carrier file has been corrupted or tampered with
 # then a "RuntimeError (HMAC verification failure.)" exception will be thrown.
 
+# Shortcuts
+# Insert a payload file into a carrier file in one line:
+::Zindosteg.insert(carrier_path, password, payload_path)
+
+# Extract a payload from a carrier in one line:
+::Zindosteg.extract(carrier_path, password, payload_path)
 ```
 
 ## Development
