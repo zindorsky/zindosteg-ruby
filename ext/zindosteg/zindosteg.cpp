@@ -661,9 +661,10 @@ namespace {
 extern "C" void Init_zindosteg()
 {
   Module rb_cModule = define_module("Zindosteg");
+  register_handler<rubyError>(handle_ruby_error);
+
   Data_Type<device_interface> rb_cZindosteg =
     define_class_under<device_interface>(rb_cModule, "File")
-    .add_handler<rubyError>(handle_ruby_error)
     .define_constructor(Constructor<device_interface, std::string, std::string, std::string>(), Arg("carrier"), Arg("password"), Arg("mode") = "r"s)
     .define_method("<<", &device_interface::write)
     .define_method("autoclose?", &device_interface::autoclose)
